@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  grpc-client:
+    build: 
+      context: ./client
+      args:
+        app_env: dev
+    volumes:
+      - ./client/app:/go/src/github.com/hannesrabo/go-micro-gRPC/client
+    ports:
+      - 8080:8080
+  # grpc-server:
+  #   build: ./server
+  #   volumes:
+  #     - ./server/app:/go/src/go-micro-gRPC/server
+  #   ports:
+  #     - 8081:81
+  grpc-server:
+    build: 
+      context: ./
+      dockerfile: ./server/Dockerfile
+      args:
+        app_env: dev
+    volumes:
+      - ./server/app:/go/src/github.com/hannesrabo/go-micro-gRPC/server
+    ports:
+      - 8081:8081

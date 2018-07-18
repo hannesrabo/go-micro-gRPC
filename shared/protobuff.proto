@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package shared;
+
+// Get user information service
+service UserService {
+    rpc GetUserInfo(UserInformationRequest) returns (UserInformation) {}
+}
+
+// Request user information
+message UserInformationRequest {
+    int64 id = 1;
+}
+
+// The user information object
+message UserInformation {
+    string name = 1;
+}
