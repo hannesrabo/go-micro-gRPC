@@ -15,6 +15,7 @@ type userService struct{}
 
 func (s *userService) GetUserInfo(ctx context.Context, request *pb.UserInformationRequest) (*pb.UserInformation, error) {
 	// Return the return message
+	log.Printf("New message")
 	return &pb.UserInformation{Name: "Hannes Rabo"}, nil
 }
 

@@ -25,11 +25,11 @@ RUN export PATH=$PATH:$GOPATH/bin
 # Compiling the protobuffer for gRPC
 RUN ./build/scripts/build-protobuff.sh
 
-COPY ./server/app /go/src/github.com/hannesrabo/go-micro-gRPC/server
 
 ######################################################################
 
 # Installing and building go code
+COPY ./server/app /go/src/github.com/hannesrabo/go-micro-gRPC/server
 WORKDIR /go/src/github.com/hannesrabo/go-micro-gRPC/server
 RUN go get ./
 RUN go build

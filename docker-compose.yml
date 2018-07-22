@@ -1,15 +1,21 @@
 version: "3"
 
+# sudo systemctl start docker
+# docker-compose up
+
 services:
   grpc-client:
     build: 
-      context: ./client
+      context: ./
+      dockerfile: ./client/Dockerfile
       args:
         app_env: dev
     volumes:
       - ./client/app:/go/src/github.com/hannesrabo/go-micro-gRPC/client
     ports:
       - 8080:8080
+    # depends_on:
+    #   - grpc-server
   # grpc-server:
   #   build: ./server
   #   volumes:
@@ -24,5 +30,5 @@ services:
         app_env: dev
     volumes:
       - ./server/app:/go/src/github.com/hannesrabo/go-micro-gRPC/server
-    ports:
-      - 8081:8081
+    # ports:
+    #   - 8081:8081
